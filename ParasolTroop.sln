@@ -1,0 +1,44 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{A51D5F22-6DA5-731D-0CB9-71CB9F5956CF}") = "ParasolTroop", "Assembly-CSharp.csproj", "{1EE60768-0014-9837-1BA7-34AA1E6BA48A}"
+EndProject
+Project("{A51D5F22-6DA5-731D-0CB9-71CB9F5956CF}") = "ParasolTroop", "Assembly-UnityScript.unityproj", "{5A64D610-FA6E-1006-925E-18546B627079}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1EE60768-0014-9837-1BA7-34AA1E6BA48A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EE60768-0014-9837-1BA7-34AA1E6BA48A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EE60768-0014-9837-1BA7-34AA1E6BA48A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EE60768-0014-9837-1BA7-34AA1E6BA48A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A64D610-FA6E-1006-925E-18546B627079}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A64D610-FA6E-1006-925E-18546B627079}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A64D610-FA6E-1006-925E-18546B627079}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A64D610-FA6E-1006-925E-18546B627079}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+		Policies = $0
+		$0.TextStylePolicy = $1
+		$1.inheritsSet = null
+		$1.scope = text/x-csharp
+		$0.CSharpFormattingPolicy = $2
+		$2.inheritsSet = Mono
+		$2.inheritsScope = text/x-csharp
+		$2.scope = text/x-csharp
+		$0.TextStylePolicy = $3
+		$3.FileWidth = 120
+		$3.TabWidth = 4
+		$3.EolMarker = Unix
+		$3.inheritsSet = Mono
+		$3.inheritsScope = text/plain
+		$3.scope = text/plain
+	EndGlobalSection
+EndGlobal
