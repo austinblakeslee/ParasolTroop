@@ -6,6 +6,7 @@
 private var blocks : ArrayList;
 private var maxHeight : int;
 private var owner : GameObject;
+private var materials : int;
 
 
 function Start () {

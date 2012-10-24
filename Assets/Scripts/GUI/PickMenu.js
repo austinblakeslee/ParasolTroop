@@ -5,7 +5,6 @@ var pause : boolean;
 var steelFloor : GameObject;
 var brickFloor : GameObject;
 var woodFloor : GameObject;
-var canFloor : GameObject;
 var sp : GameObject;
 private var counter : int = 0;
 var maxHeight : int = 6;
@@ -34,7 +33,9 @@ function Update () {
 			Time.timeScale = 1.0;
 		}
 	}
-	
+	if (Input.GetKeyDown(KeyCode.T)) {
+	GameObject.FindGameObjectWithTag("Player").transform.position.y += 25;
+	}
 }
 
 function OnGUI() {
@@ -51,19 +52,6 @@ function OnGUI() {
         	type = "wood";
         	//showMenu = false;
         	SpawnFloor();
-        	TurnOrder.play1turn = !(TurnOrder.play1turn);
-        }
-    	else if (Cannon && GUI.Button(Rect(Screen.width*0.45,Screen.height*0.7,Screen.width*0.1,Screen.height*0.1),"Cannon")) {
-        	type = "cannon";
-        	//showMenu = false;
-        	SpawnFloor();
-        	
-        	canCounter++;
-        	
-        	if (canCounter >= 2)
-        	{
-        		Cannon = false;
-        	}
         	TurnOrder.play1turn = !(TurnOrder.play1turn);
         }
         else if (Brick && GUI.Button(Rect(Screen.width*0.45,Screen.height*0.5,Screen.width*0.1,Screen.height*0.1),"Brick")) {
@@ -105,33 +93,49 @@ function OnGUI() {
 }
 
 function SpawnFloor() {
-
+	
 	sp.transform.position = GameObject.FindGameObjectWithTag("Player").transform.position;
 
 	var temp : GameObject;
 
 	if(type == "wood") {
-		temp = Instantiate(woodFloor,sp.transform.position,Quaternion.identity);
+		if(TurnOrder.play1turn) {
+			temp = Instantiate(woodFloor,Vector3(sp.transform.position.x,sp.transform.position.y+30,sp.transform.position.z),Quaternion.identity);
+			TurnOrder.player1height += 1;
+		}
+		else {
+			temp = Instantiate(woodFloor,Vector3(sp.transform.position.x,sp.transform.position.y+30,sp.transform.position.z),Quaternion.identity);
+			TurnOrder.player2height += 1;
+		}
 		temp.tag = "Player Block";
 		//showMenu = true;
 	}
 	else if(type == "steel") {
-		temp = Instantiate(steelFloor,sp.transform.position,Quaternion.identity);
+		if(TurnOrder.play1turn) {
+			temp = Instantiate(steelFloor,Vector3(sp.transform.position.x,sp.transform.position.y+30,sp.transform.position.z),Quaternion.identity);
+			TurnOrder.player1height += 1;
+		}
+		else {
+			temp = Instantiate(steelFloor,Vector3(sp.transform.position.x,sp.transform.position.y+30,sp.transform.position.z),Quaternion.identity);
+			TurnOrder.player2height += 1;
+		}
 		temp.tag = "Player Block";
 		//showMenu = true;
 	}
 	else if(type == "brick") {
-		temp = Instantiate(brickFloor,sp.transform.position,Quaternion.identity);
-		temp.tag = "Player Block";
-		//showMenu = true;
-	}
-	else if(type == "cannon") {
-		temp = Instantiate(canFloor,sp.transform.position,Quaternion.identity);
+		if(TurnOrder.play1turn) {
+			temp = Instantiate(brickFloor,Vector3(sp.transform.position.x,sp.transform.position.y+30,sp.transform.position.z),Quaternion.identity);
+			TurnOrder.player1height += 1;
+		}
+		else {
+			temp = Instantiate(brickFloor,Vector3(sp.transform.position.x,sp.transform.position.y+30,sp.transform.position.z),Quaternion.identity);
+			TurnOrder.player2height += 1;
+		}
 		temp.tag = "Player Block";
 		//showMenu = true;
 	}
 		
-	GameObject.FindGameObjectWithTag("Player").transform.position.y += 2;
+	GameObject.FindGameObjectWithTag("Player").transform.position.y += 25;
 	
 	counter++;
 }

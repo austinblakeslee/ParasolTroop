@@ -47,11 +47,16 @@ if(choose) {
 	{
 		if(TurnOrder.play1turn == true) {
 			TurnOrder.player1Spot = towerPoints[index];
+			TurnOrder.player1Spot.AddComponent(Tower);
 			TurnOrder.play1turn = false;
 			index += 1;
+			if(index >= towerPoints.Length) {
+				index = 0;
+			}
 		}
 		else if(TurnOrder.play1turn != true) {
 			TurnOrder.player2Spot = towerPoints[index];
+			TurnOrder.player2Spot.AddComponent(Tower);
 			TurnOrder.play1turn = true;
 			PickMenu.showMenu = true;
 			TurnOrder.turnNum++;
@@ -70,9 +75,9 @@ if(choose) {
 	}
 }
 else if(TurnOrder.play1turn) {
-	this.transform.position = TurnOrder.player1Spot.transform.position;
+	this.transform.position = Vector3(TurnOrder.player1Spot.transform.position.x,TurnOrder.player1Spot.transform.position.y+(TurnOrder.player1height+0)*25,TurnOrder.player1Spot.transform.position.z);
 }
 else if(!TurnOrder.play1turn) {
-	this.transform.position = TurnOrder.player2Spot.transform.position;
+	this.transform.position = Vector3(TurnOrder.player2Spot.transform.position.x,TurnOrder.player2Spot.transform.position.y+(TurnOrder.player2height+0)*25,TurnOrder.player2Spot.transform.position.z);
 }
 }

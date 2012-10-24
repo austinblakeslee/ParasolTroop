@@ -5,6 +5,8 @@ static var ceasefire : int;
 static var battlePhase : boolean;
 static var player1Spot : GameObject;
 static var player2Spot : GameObject;
+static var player1height : int;
+static var player2height : int;
 public var playText : GUIText;
 
 function Start () {
