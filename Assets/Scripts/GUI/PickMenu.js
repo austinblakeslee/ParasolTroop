@@ -1,6 +1,6 @@
 #pragma strict
 var type : String;
-var showMenu : boolean;
+static var showMenu : boolean;
 var pause : boolean;
 var steelFloor : GameObject;
 var brickFloor : GameObject;
@@ -39,11 +39,11 @@ function Update () {
 
 function OnGUI() {
 
-	if (canEnable && !showMenu && Input.GetKeyDown(KeyCode.Space))
-	{
-		showMenu = true;
-		GameObject.FindGameObjectWithTag("GUI Instructions").guiText.text = "Select Tower segments.\nYou may only select 1 Steel, 2 Cannons, and 2 Bricks.\nMax tower height is 6";
-	}
+	//if (canEnable && !showMenu && Input.GetKeyDown(KeyCode.Space))
+	//{
+		//showMenu = true;
+		//GameObject.FindGameObjectWithTag("GUI Instructions").guiText.text = "Select Tower segments.\nYou may only select 1 Steel, 2 Cannons, and 2 Bricks.\nMax tower height is 6";
+	//}
 
 	if(!pause) {
 	if(showMenu) {
@@ -51,6 +51,7 @@ function OnGUI() {
         	type = "wood";
         	//showMenu = false;
         	SpawnFloor();
+        	TurnOrder.play1turn = !(TurnOrder.play1turn);
         }
     	else if (Cannon && GUI.Button(Rect(Screen.width*0.45,Screen.height*0.7,Screen.width*0.1,Screen.height*0.1),"Cannon")) {
         	type = "cannon";
@@ -63,6 +64,7 @@ function OnGUI() {
         	{
         		Cannon = false;
         	}
+        	TurnOrder.play1turn = !(TurnOrder.play1turn);
         }
         else if (Brick && GUI.Button(Rect(Screen.width*0.45,Screen.height*0.5,Screen.width*0.1,Screen.height*0.1),"Brick")) {
         	type = "brick";
@@ -74,12 +76,14 @@ function OnGUI() {
         	{
         		Brick = false;
         	}
+        	TurnOrder.play1turn = !(TurnOrder.play1turn);
         }
     	else if (Steel && GUI.Button(Rect(Screen.width*0.65,Screen.height*0.5,Screen.width*0.1,Screen.height*0.1),"Steel")) {
         	type = "steel";
         	//showMenu = false;
         	SpawnFloor();
         	Steel = false;
+        	TurnOrder.play1turn = !(TurnOrder.play1turn);
         }
     }
     }
