@@ -14,7 +14,7 @@ function Start () {
 
 function Update () {
 if(choose) {
-	print(index);
+	//print(index);
 	if (Input.GetKeyDown(KeyCode.LeftArrow))
 	{
 		if (index <= 0)
