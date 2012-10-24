@@ -65,6 +65,7 @@
      <Compile Include="Assets\Scripts\Tower\Weapons\Ballista.js" />
      <Compile Include="Assets\Scripts\Tower\Weapons\Cannon.js" />
      <Compile Include="Assets\Scripts\Tower\Weapons\Catapult.js" />
+     <Compile Include="Assets\Scripts\TurnOrder.js" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
