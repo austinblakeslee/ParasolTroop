@@ -53,6 +53,7 @@
      <Compile Include="Assets\Scripts\Player\ArrowController.js" />
      <Compile Include="Assets\Scripts\Player\PlayerUnitController.js" />
      <Compile Include="Assets\Scripts\PlayerFocus.js" />
+     <Compile Include="Assets\Scripts\PowerBar.js" />
      <Compile Include="Assets\Scripts\Tower\AutoTarget.js" />
      <Compile Include="Assets\Scripts\Tower\Blocks\BrickBlock.js" />
      <Compile Include="Assets\Scripts\Tower\Blocks\SteelBlock.js" />

@@ -9,7 +9,8 @@ function Start () {
 function Update () {
 	if(Input.GetMouseButton(1)) {
 		transform.LookAt(target.transform.position);
-		var rotation = Vector3( Input.GetAxisRaw( "Mouse X" ), -Input.GetAxisRaw( "Mouse Y" ), 0 );
+		var rotation = Vector3( Input.GetAxisRaw( "Mouse X" ), 0, 0 );
+		//deleted -Input.GetAxisRaw( "Mouse Y" )
 		transform.Translate( rotation * Time.deltaTime * rotationSpeed );
 	}
 	
