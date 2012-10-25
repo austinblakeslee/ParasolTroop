@@ -8,6 +8,12 @@ public var turnTime : int = 30;
 public var baseResources : int = 100;
 public var towerHeight : int = 10;
 
+public var values : Hashtable;
+values = new Hashtable();
+values.Add("turnTime", turnTime);
+values.Add("baseResources", baseResources);
+values.Add("towerHeight", towerHeight);
+
 //class values
 private var showOptionsMenu : boolean = false;
 

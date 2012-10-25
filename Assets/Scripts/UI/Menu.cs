@@ -6,6 +6,7 @@ public class Menu : MonoBehaviour {
 	public List<MenuItem> menuItems = new List<MenuItem>();
 	public Texture2D background;
 	public bool on;
+	public GameValues gameValues;
 	private float placeholder = 50;
 	
 	/*public Menu() {
@@ -19,11 +20,11 @@ public class Menu : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	/*void Update () {
 	
 	}*/
 	
@@ -49,10 +50,18 @@ public class Menu : MonoBehaviour {
 							GUI.Label(new Rect(m.getLeftI(), m.getTopI(), m.getWidthI(), m.getHeightI()), m.text);
 							break;
 						case MenuItem.MenuItemType.HorizontalSlider:
-							placeholder = GUI.HorizontalSlider(new Rect(m.getLeftI(), m.getTopI(), m.getWidthI(), m.getHeightI()),placeholder,m.sliderMin,m.sliderMax);
+							if (gameValues.values is Dictionary<string, int>){
+								if (gameValues.values.ContainsKey(m.sliderGameValue)){
+									gameValues.values[m.sliderGameValue] = (int)GUI.HorizontalSlider(new Rect(m.getLeftI(), m.getTopI(), m.getWidthI(), m.getHeightI()),gameValues.values[m.sliderGameValue],m.sliderMin,m.sliderMax);
+								}
+							}
 							break;
 						case MenuItem.MenuItemType.VerticalSlider:
-							placeholder = GUI.VerticalSlider(new Rect(m.getLeftI(), m.getTopI(), m.getWidthI(), m.getHeightI()),placeholder,m.sliderMin,m.sliderMax);
+							if (gameValues.values is Dictionary<string, int>){
+								if (gameValues.values.ContainsKey(m.sliderGameValue)){
+									gameValues.values[m.sliderGameValue] = (int)GUI.VerticalSlider(new Rect(m.getLeftI(), m.getTopI(), m.getWidthI(), m.getHeightI()),gameValues.values[m.sliderGameValue],m.sliderMin,m.sliderMax);
+								}
+							}
 							break;
 						default:
 							return;

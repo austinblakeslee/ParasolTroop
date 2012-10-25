@@ -20,6 +20,7 @@ public class MenuItem : MonoBehaviour {
 	public MenuItemType type = MenuItemType.Button;
 	public float sliderMin = 0;
 	public float sliderMax = 100;
+	public string sliderGameValue = "";
 	
 	/*public MenuItem() {
 		text = "";
