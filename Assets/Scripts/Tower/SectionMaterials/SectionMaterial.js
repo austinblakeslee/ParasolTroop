@@ -35,4 +35,3 @@ function GetCostPerRepair() {
 function GetMaterialType() {
     return mtype;
 }
-

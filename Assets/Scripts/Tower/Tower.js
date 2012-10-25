@@ -1,30 +1,66 @@
 #pragma strict
+import System.Collections.Generic;
 
-//This class belongs to the the player class and holds all the blocks in a tower.
+class Tower extends MonoBehaviour {
+    private var sections : List.<Section>;
 
+    function Tower() {
+        sections = new List.<Section>();
+    }
 
-private var blocks : ArrayList;
-private var maxHeight : int;
-private var owner : GameObject;
-private var materials : int;
+    function GetSections() {
+        return this.sections;
+    }
 
+    function GetSection(index : int) : Section {
+        var s : Section = this.sections[index];
+        return s;
+    }
 
-function Start () {
-	maxHeight = GameObject.FindGameObjectWithTag("Game Values").GetComponent(GameValues).towerHeight;
-	blocks = new ArrayList(maxHeight);
-}
+    function AddSection(m : SectionMaterial, w : SectionWeapon) : int {
+        var s : Section = new Section(m, w);
+        this.sections.Add(s);
+        return s.GetCost();
+    }
 
-function Update () {
-	
-}
+    function RepairSection(i : int) : int {
+        var s : Section = GetSection(i);
+        s.Repair();
+        return s.GetCostPerRepair();
+    }
 
-function getBlocks()
-{
-	return blocks;
-}
+    function RetrofitSection(i : int, m : SectionMaterial, w : SectionWeapon) : int {
+        var s : Section = GetSection(i);
+        var cost : int = 0;
+        if(s.GetMaterial().GetType() != m.GetType()) {
+            cost += m.GetCost() + 100;
+            s.ChangeMaterial(m);
+        }
+        if(s.GetWeapon().GetType() != s.GetType()) {
+            cost += w.GetCost() + 100;
+            s.ChangeWeapon(w);
+        }
+        return cost;
+    }
 
-//Calculates the weight on a given block
-function calcWeight(index : int)
-{
-	
+    function DamageSection(i : int, damage : int) {
+        GetSection(i).SubtractSP(damage);
+    }
+
+    function GetTotalWeight() : int {
+        return SumWeight(0, 0);
+    }
+
+    function CalcWeightAboveSection(index : int) : int {
+        return SumWeight(index+1, 0);
+    }
+
+    function SumWeight(index : int, weight : int) : int {
+        var section : Section = sections[index];
+        if(index >= sections.Count) {
+            return weight + section.GetWeight();
+        } else {
+            return weight + SumWeight(index + 1, weight);
+        }
+    }
 }
